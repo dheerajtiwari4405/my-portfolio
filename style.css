@@ -1,0 +1,288 @@
+:root {
+        --primary: #6366f1;
+        --secondary: #ec4899;
+        --accent: #22d3ee;
+        --dark: #0f172a;
+        --darker: #020617;
+    }
+    
+    * {
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        font-family: 'Outfit', sans-serif;
+        background: var(--darker);
+        color: #fff;
+        overflow-x: hidden;
+    }
+    
+    .heading-font {
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .text-gradient {
+        background: linear-gradient(135deg, var(--accent), var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        background-size: 200% 200%;
+        animation: gradient-shift 4s ease infinite;
+    }
+    
+    @keyframes gradient-shift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+    
+    .bg-gradient {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+        background-size: 200% 200%;
+        animation: gradient-shift 6s ease infinite;
+    }
+    
+    .glass-effect {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .shadow-glow {
+        box-shadow: 0 0 60px rgba(99, 102, 241, 0.3);
+    }
+    
+    .btn-main {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        z-index: 1;
+    }
+    
+    .btn-main::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.5s ease;
+        z-index: -1;
+    }
+    
+    .btn-main:hover::before {
+        left: 100%;
+    }
+    
+    .btn-main:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+    }
+    
+    .float-up {
+        animation: floating 4s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-12px); }
+    }
+    
+    .bg-blob {
+        filter: blur(80px);
+        opacity: 0.4;
+        animation: blob-move 20s infinite alternate;
+    }
+    
+    @keyframes blob-move {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+        100% { transform: translate(0px, 0px) scale(1); }
+    }
+    
+    .card-lift {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .card-lift:hover {
+        transform: translateY(-12px) scale(1.02);
+    }
+    
+    .icon-animate {
+        transition: all 0.4s ease;
+    }
+    
+    .card-lift:hover .icon-animate {
+        transform: scale(1.2) rotate(10deg);
+    }
+    
+    .menu-link {
+        position: relative;
+    }
+    
+    .menu-link::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        transition: width 0.3s ease;
+    }
+    
+    .menu-link:hover::after {
+        width: 100%;
+    }
+    
+    .project-info {
+        background: linear-gradient(180deg, transparent 0%, rgba(2, 6, 23, 0.95) 100%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    
+    .project-item:hover .project-info {
+        opacity: 1;
+    }
+    
+    .project-item:hover img {
+        transform: scale(1.1);
+    }
+    
+    .cursor-center {
+        width: 8px;
+        height: 8px;
+        background: var(--accent);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.1s ease;
+    }
+    
+    .cursor-ring {
+        width: 40px;
+        height: 40px;
+        border: 2px solid rgba(34, 211, 238, 0.5);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9998;
+        transition: all 0.15s ease-out;
+    }
+    
+    @media (max-width: 768px) {
+        .cursor-center, .cursor-ring {
+            display: none;
+        }
+    }
+    
+    .sidebar-nav {
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    
+    .sidebar-nav.active {
+        transform: translateX(0);
+    }
+    
+    .scroll-marquee {
+        animation: marquee 20s linear infinite;
+    }
+    
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    
+    .char-animate {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(50px) rotateX(-90deg);
+    }
+
+    /* ================================================
+    TYPEWRITER EFFECT - NAME BANNER
+    Animated name display with typewriter effect
+    ================================================ */
+
+    .typewriter-container {
+        box-shadow: 0 8px 32px rgba(34, 211, 238, 0.15);
+        border: 1px solid rgba(34, 211, 238, 0.3);
+        animation: scaleIn 0.6s ease-out 0.2s both;
+    }
+
+    @keyframes scaleIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .typewriter-name {
+        letter-spacing: 0.1em;
+        min-width: fit-content;
+        white-space: nowrap;
+    }
+
+    .typewriter-gradient {
+        background: linear-gradient(135deg, #22d3ee, #6366f1, #ec4899, #22d3ee);
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradient-shift 6s ease infinite, typewriter 4s steps(17, end) 0.5s 1 normal both;
+    }
+
+    .typewriter-cursor {
+        background: linear-gradient(135deg, #22d3ee, #6366f1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: blink 1s infinite;
+        margin-left: 4px;
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    @keyframes typewriter {
+        from {
+            width: 0;
+            visibility: hidden;
+        }
+        to {
+            width: 100%;
+            visibility: visible;
+        }
+    }
+
+    @keyframes blink {
+        0%, 50%, 100% {
+            opacity: 1;
+        }
+        25%, 75% {
+            opacity: 0;
+        }
+    }
+
+    /* Image Container - Adjust width and height here */
+    .image-container {
+        width: 100%;
+        height: auto;
+        max-width: 600px;
+        aspect-ratio: 1 / 1;
+    }
+
+    /* Image Position Control - Profile pic styling */
+    .profile-pic img {
+        object-fit: contain;
+        object-position: center;
+        width: 100%;
+        height: 100%;
+    }
